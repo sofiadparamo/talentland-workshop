@@ -31,13 +31,13 @@ jobs:
         npm run test --if-present
         
     - name: Compress artifacts
-      run: zip -0 -r node-app.zip ./build
+      run: cd build && zip -0 -r node-app.zip ./
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:
         name: node-app
-        path: node-app.zip
+        path: build/node-app.zip
 
   deploy:
     permissions:
