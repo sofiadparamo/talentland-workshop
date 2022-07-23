@@ -6,7 +6,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: talentland2022-gh-actions
-  AZURE_WEBAPP_PACKAGE_PATH: 'build'
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
   NODE_VERSION: '16.x'
 
 permissions:
@@ -57,9 +57,9 @@ jobs:
     - name: Decompress artifacts
       run: unzip node-app.zip
       
-    - name: add process.json
+    - name: Add process.json
       run: |
-        echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> build/process.json
+        echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> process.json
 
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp 
